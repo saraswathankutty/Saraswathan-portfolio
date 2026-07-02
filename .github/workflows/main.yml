@@ -29,8 +29,8 @@ jobs:
         uses: actions/checkout@v4
 
       # Remove PHP file because GitHub Pages cannot run PHP
-      - name: Remove PHP file
-        run: rm -f contact.php
+      # - name: Remove PHP file
+      #   run: rm -f contact.php
 
       # Configure GitHub Pages
       - name: Setup Pages
