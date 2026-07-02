@@ -1,0 +1,66 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main", "master"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Secure PHP File (Prevent Leak on GitHub Pages)
+        run: rm -f contact.php
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+          
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  # ---------------------------------------------------------------------------------
+  # IMPORTANT: GitHub Pages CANNOT run PHP code.
+  # If you upload contact.php to GitHub Pages, it will expose your email password!
+  # 
+  # To deploy contact.php, you must host it on a PHP-enabled server (like your Somee host).
+  # Below is an FTP deployment job you can UNCOMMENT and configure with GitHub Secrets
+  # to automatically deploy contact.php to your real server.
+  # ---------------------------------------------------------------------------------
+  
+  # deploy-php-backend:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #     
+  #     - name: Upload contact.php via FTP
+  #       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+  #       with:
+  #         server: ${{ secrets.FTP_SERVER }}
+  #         username: ${{ secrets.FTP_USERNAME }}
+  #         password: ${{ secrets.FTP_PASSWORD }}
+  #         # Only deploy contact.php
+  #         exclude: |
+  #           **/*
+  #           !contact.php
