@@ -2,9 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
-      - master
+    branches: ["main", "master"]
   workflow_dispatch:
 
 permissions:
@@ -13,39 +11,30 @@ permissions:
   id-token: write
 
 concurrency:
-  group: github-pages
-  cancel-in-progress: true
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-
-      # Remove PHP file because GitHub Pages cannot run PHP
-      # - name: Remove PHP file
-      #   run: rm -f contact.php
-
-      # Configure GitHub Pages
+        
+      - name: Secure PHP File (Prevent Leak on GitHub Pages)
+        run: rm -f contact.php
+      
       - name: Setup Pages
         uses: actions/configure-pages@v4
-
-      # Upload website files
-      - name: Upload Pages Artifact
+      
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
-
-      # Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4          
+          path: '.'
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
