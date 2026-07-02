@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. Initialize AOS
     AOS.init({
         duration: 800,
-        once: false,
+        once: true,
         offset: 100
     });
 
