@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Saraswathan I - Senior .NET Full Stack Developer Portfolio">
+    <meta name="keywords"
+        content="Saraswathan I, Senior .NET Developer, Full Stack Developer, Angular, C#, Azure, Portfolio, Microservices">
+    <meta property="og:title" content="Saraswathan I | Senior Full Stack Developer">
+    <meta property="og:description"
+        content="Portfolio of Saraswathan I, specialized in .NET Core, Angular, SQL Server, and Microservices.">
+    <meta property="og:type" content="website">
+    <title>Saraswathan I | Senior Full Stack Developer</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader-container">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scroll-bar"></div>
+    </div>
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar glassmorphism">
+        <div class="nav-container">
+            <a href="#" class="logo">&lt;Saraswathan/&gt;</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#problem-solving">Problem Solving</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#github">GitHub</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Toggle Theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu glassmorphism">
+        <ul class="mobile-nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#problem-solving">Problem Solving</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#github">GitHub</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h2 class="greeting">Hello, I'm</h2>
+            <h1 class="name">Saraswathan I</h1>
+            <h3 class="role">Senior .NET Full Stack Developer</h3>
+            <div class="typing-container">
+                <span id="typing-text"></span><span class="cursor">|</span>
+            </div>
+            <p class="hero-description">
+                4+ Years of Experience <br>
+                Specialized in building scalable enterprise web applications using .NET Core, ASP.NET Web API, Angular,
+                SQL Server, and Microservices.
+            </p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Download Resume <i class="fas fa-download"></i></a>
+                <a href="#projects" class="btn btn-secondary">View Projects <i class="fas fa-project-diagram"></i></a>
+                <a href="#contact" class="btn btn-outline">Contact Me <i class="fas fa-envelope"></i></a>
+                <a href="#about" class="btn btn-outline">About Me <i class="fas fa-user"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title" data-aos="fade-up">About Me</h2>
+        <div class="about-container glassmorphism" data-aos="fade-up" data-aos-delay="100">
+            <div class="about-content" style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
+                <div class="about-image" style="flex: 1; min-width: 250px; text-align: center;">
+                    <img src="saraswathan.png" alt="Saraswathan I"
+                        style="width: 100%; max-width: 300px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 3px solid var(--primary-color);">
+                </div>
+                <div class="about-text" style="flex: 2; min-width: 300px;">
+                    <p>I'm a passionate Full Stack Developer with over 4 years of professional experience designing and
+                        developing enterprise-grade applications.</p>
+                    <p>I specialize in backend development using C#, .NET Core, ASP.NET Web API, and frontend
+                        development using Angular, along with MS SQL Server for database management.</p>
+                    <p>I enjoy solving complex business problems, optimizing application performance, designing scalable
+                        architectures, and creating clean, maintainable code.</p>
+                    <p>I'm continuously learning modern technologies including Azure, Docker, Kubernetes, AI-assisted
+                        development, and Cloud DevOps practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2 class="section-title" data-aos="fade-up">Technical Skills</h2>
+        <div class="skills-container">
+            <!-- Backend -->
+            <div class="skill-category glassmorphism" data-aos="fade-up" data-aos-delay="100">
+                <h3><i class="fas fa-server"></i> Backend</h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <div class="skill-info"><span>C#</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>.NET Core / ASP.NET Core</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Web API & REST APIs</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Entity Framework Core & LINQ</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Microservices & JWT</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frontend -->
+            <div class="skill-category glassmorphism" data-aos="fade-up" data-aos-delay="200">
+                <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Angular</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>TypeScript / JavaScript</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>HTML5 / CSS3</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Bootstrap / Responsive Design</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Database -->
+            <div class="skill-category glassmorphism" data-aos="fade-up" data-aos-delay="300">
+                <h3><i class="fas fa-database"></i> Database</h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Microsoft SQL Server</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Stored Procedures / Views</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Query Optimization & Indexing</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools, DevOps & Cloud -->
+            <div class="skill-category glassmorphism" data-aos="fade-up" data-aos-delay="400">
+                <h3><i class="fas fa-tools"></i> Tools, Cloud & DevOps</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Git & GitHub</span>
+                    <span class="skill-tag">Visual Studio</span>
+                    <span class="skill-tag">Postman & Swagger</span>
+                    <span class="skill-tag">Azure Fundamentals</span>
+                    <span class="skill-tag">Azure Storage & SQL</span>
+                    <span class="skill-tag">GitHub Actions CI/CD</span>
+                    <span class="skill-tag">Azure App Service</span>
+                    <span class="skill-tag">SOLID Principles</span>
+                    <span class="skill-tag">Design Patterns</span>
+                    <span class="skill-tag">Performance Optimization</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2 class="section-title" data-aos="fade-up">Experience</h2>
+        <div class="timeline">
+            <!-- Willworks Infinity -->
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glassmorphism">
+                    <div class="timeline-header">
+                        <h3>Senior Full Stack Developer</h3>
+                        <span class="timeline-date">Aug 2024 – Present</span>
+                    </div>
+                    <h4 class="company">Willworks Infinity Pvt Ltd</h4>
+                    <ul class="timeline-responsibilities">
+                        <li>Lead full-stack Stockcount enterprise inventory platform (Audit, Inventory, Finance modules)
+                            using Angular 16 + .NET Core 8 microservices.</li>
+                        <li>Architected multi-company support with granular RBAC, permission management, and JWT-based
+                            authentication.</li>
+                        <li>Built GST/VAT tax calculation engine and comprehensive accounting reports.</li>
+                        <li>Optimized SQL Server queries and designed scalable REST APIs handling 500k+ daily requests.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Nohitatu Technologies -->
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glassmorphism">
+                    <div class="timeline-header">
+                        <h3>Backend Developer (.NET Core)</h3>
+                        <span class="timeline-date">2023 – 2024</span>
+                    </div>
+                    <h4 class="company">Nohitatu Technologies</h4>
+                    <ul class="timeline-responsibilities">
+                        <li>Delivered PHICURE (HIPAA-compliant healthcare platform) and CRM applications.</li>
+                        <li>Optimized SQL queries and stored procedures, achieving a 40% reduction in query execution
+                            time.</li>
+                        <li>Implemented Azure Functions for background data processing pipelines.</li>
+                        <li>Built authentication middleware and role-based access control.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Human Cloud Soft -->
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glassmorphism">
+                    <div class="timeline-header">
+                        <h3>.NET Developer</h3>
+                        <span class="timeline-date">2022 – 2023</span>
+                    </div>
+                    <h4 class="company">Human Cloud Soft</h4>
+                    <ul class="timeline-responsibilities">
+                        <li>Developed RESTful APIs using .NET Core for various client domains.</li>
+                        <li>Designed database schemas and data access layers using EF & Dapper.</li>
+                        <li>Implemented structured logging, global exception handling, and RBAC security.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Sharing Section -->
+    <section id="problem-solving" class="section">
+        <h2 class="section-title" data-aos="fade-up">Problem Solving & Optimization</h2>
+
+        <div class="about-container glassmorphism" data-aos="fade-up" data-aos-delay="100"
+            style="max-width: 1000px; margin-bottom: 3rem; padding: 2rem; width: 100%;">
+            <div class="about-text" style="text-align: center;">
+                <p style="font-size: 1.1rem; color: var(--text-color);">I enjoy solving complex technical problems by
+                    identifying bottlenecks, analyzing root causes, and implementing scalable solutions. My focus is on
+                    writing clean, maintainable, and high-performance applications that provide a smooth user
+                    experience.</p>
+            </div>
+        </div>
+
+        <div class="projects-grid" style="margin-bottom: 4rem;">
+            <!-- Performance Optimization -->
+            <div class="project-card glassmorphism" data-aos="fade-up" style="display: flex; flex-direction: column;">
+                <div class="project-content" style="flex: 1;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1.5rem;"><i class="fas fa-rocket"></i>
+                        Performance Optimization</h3>
+                    <ul class="timeline-responsibilities" style="padding-left: 1rem;">
+                        <li><strong>Large Data Retrieval:</strong> Optimized APIs handling millions of records, improved
+                            SQL queries (indexing, execution plans), server-side pagination, and EF Core operations.
+                        </li>
+                        <li><strong>Database:</strong> Designed clustered/non-clustered indexes, eliminated N+1
+                            problems, optimized stored procedures, and batch processing for bulk inserts.</li>
+                        <li><strong>Batch Import:</strong> Built efficient Excel/CSV import modules with chunking, async
+                            processing, and error reporting to handle millions of rows.</li>
+                        <li><strong>UI & Input:</strong> Lazy loading, virtual scrolling, debouncing, and caching to
+                            reduce initial load time and minimize API calls.</li>
+                        <li><strong>Load Handling:</strong> Scalable layered architecture for handling multiple
+                            concurrent users and optimized DB connections.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Debugging & Development -->
+            <div class="project-card glassmorphism" data-aos="fade-up" data-aos-delay="100"
+                style="display: flex; flex-direction: column;">
+                <div class="project-content" style="flex: 1;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1.5rem;"><i class="fas fa-bug"></i> Debugging
+                        & Development</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-muted); font-weight: 500;">Structured Debugging
+                        Approach:</p>
+                    <ul class="timeline-responsibilities" style="padding-left: 1rem; margin-bottom: 1.5rem;">
+                        <li>Analyze logs, reproduce issues in staging, and debug using Visual Studio tools.</li>
+                        <li>Inspect SQL execution plans and monitor API requests via Postman/DevTools.</li>
+                        <li>Identify memory leaks and perform root cause analysis.</li>
+                    </ul>
+
+                    <p style="margin-bottom: 1rem; color: var(--text-muted); font-weight: 500;">Development Approach:
+                    </p>
+                    <ul class="timeline-responsibilities" style="padding-left: 1rem;">
+                        <li>Analyze problems before implementing, measure performance using profiling.</li>
+                        <li>Optimize only where measurable bottlenecks exist.</li>
+                        <li>Ensure solutions are scalable, secure, and production-ready.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-title" data-aos="fade-up" style="font-size: 2rem; margin-bottom: 3rem;">Real-World Case
+            Studies</h3>
+        <div class="timeline" style="max-width: 900px; margin: 0 auto;">
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glassmorphism">
+                    <div class="timeline-header">
+                        <h3 style="color: var(--primary-color);">Optimizing Large Data Processing</h3>
+                    </div>
+                    <p style="margin: 0.5rem 0;"><strong><i class="fas fa-exclamation-circle"
+                                style="color: #ef4444;"></i> Problem:</strong> Importing over 10 million records caused
+                        memory issues and extremely long processing times.</p>
+                    <p style="margin: 0.5rem 0;"><strong><i class="fas fa-lightbulb"
+                                style="color: var(--secondary-color);"></i> Solution:</strong> Implemented batch-wise
+                        processing, optimized Entity Framework operations, reduced database round trips, and processed
+                        records asynchronously.</p>
+                    <p style="margin: 0.5rem 0;"><strong><i class="fas fa-check-circle" style="color: #10b981;"></i>
+                            Result:</strong> Significantly reduced memory usage, faster import execution, and improved
+                        application stability.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glassmorphism">
+                    <div class="timeline-header">
+                        <h3 style="color: var(--primary-color);">Fast Search Performance</h3>
+                    </div>
+                    <p style="margin: 0.5rem 0;"><strong><i class="fas fa-exclamation-circle"
+                                style="color: #ef4444;"></i> Problem:</strong> Search operations on large datasets
+                        became increasingly slow as data grew.</p>
+                    <p style="margin: 0.5rem 0;"><strong><i class="fas fa-lightbulb"
+                                style="color: var(--secondary-color);"></i> Solution:</strong> Created appropriate
+                        indexes, optimized SQL queries, implemented server-side filtering, and minimized unnecessary
+                        joins.</p>
+                    <p style="margin: 0.5rem 0;"><strong><i class="fas fa-check-circle" style="color: #10b981;"></i>
+                            Result:</strong> Much faster search responses, reduced database load, and improved overall
+                        user experience.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glassmorphism">
+                    <div class="timeline-header">
+                        <h3 style="color: var(--primary-color);">Angular UI Optimization</h3>
+                    </div>
+                    <p style="margin: 0.5rem 0;"><strong><i class="fas fa-exclamation-circle"
+                                style="color: #ef4444;"></i> Problem:</strong> Large tables caused slow rendering and
+                        poor responsiveness.</p>
+                    <p style="margin: 0.5rem 0;"><strong><i class="fas fa-lightbulb"
+                                style="color: var(--secondary-color);"></i> Solution:</strong> Implemented virtual
+                        scrolling, lazy loading, server-side pagination, and optimized change detection.</p>
+                    <p style="margin: 0.5rem 0;"><strong><i class="fas fa-check-circle" style="color: #10b981;"></i>
+                            Result:</strong> Faster page rendering, lower browser memory consumption, and smooth
+                        scrolling even with large datasets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+
+        <div class="project-filters" data-aos="fade-up" data-aos-delay="100">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+            <button class="filter-btn" data-filter="backend">Backend API</button>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card glassmorphism" data-category="fullstack" data-aos="zoom-in" data-aos-delay="100">
+                <div class="project-content">
+                    <h3>ERP Management System</h3>
+                    <div class="project-tech">
+                        <span>.NET Core</span><span>Angular</span><span>SQL Server</span>
+                    </div>
+                    <p>Comprehensive ERP solution featuring inventory management, purchase orders, sales management, and
+                        GST invoice generation.</p>
+                    <ul class="project-features">
+                        <li><i class="fas fa-check-circle"></i> User Management & Auth</li>
+                        <li><i class="fas fa-check-circle"></i> Custom Reports</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card glassmorphism" data-category="fullstack" data-aos="zoom-in" data-aos-delay="200">
+                <div class="project-content">
+                    <h3>Inventory Management System</h3>
+                    <div class="project-tech">
+                        <span>.NET Core Web API</span><span>Angular</span><span>SQL Server</span>
+                    </div>
+                    <p>Robust system for warehouse tracking, barcode integration, purchase workflows, and dashboard
+                        analytics.</p>
+                    <ul class="project-features">
+                        <li><i class="fas fa-check-circle"></i> Stock Tracking</li>
+                        <li><i class="fas fa-check-circle"></i> Warehouse Management</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card glassmorphism" data-category="backend" data-aos="zoom-in" data-aos-delay="300">
+                <div class="project-content">
+                    <h3>Document Management System</h3>
+                    <div class="project-tech">
+                        <span>ASP.NET Core</span><span>Angular</span><span>Azure Storage</span>
+                    </div>
+                    <p>Secure document handling system with version control, advanced search, and comprehensive audit
+                        logs.</p>
+                    <ul class="project-features">
+                        <li><i class="fas fa-check-circle"></i> Secure Access Control</li>
+                        <li><i class="fas fa-check-circle"></i> File Upload/Download</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Project 4 (PHICURE from CV) -->
+            <div class="project-card glassmorphism" data-category="fullstack" data-aos="zoom-in" data-aos-delay="400">
+                <div class="project-content">
+                    <h3>PHICURE - Healthcare Platform</h3>
+                    <div class="project-tech">
+                        <span>.NET 5</span><span>Angular 14</span><span>Azure HIPAA</span>
+                    </div>
+                    <p>HIPAA-compliant healthcare data management and analytics platform for US clients with automated
+                        scheduling.</p>
+                    <ul class="project-features">
+                        <li><i class="fas fa-check-circle"></i> Data Encryption</li>
+                        <li><i class="fas fa-check-circle"></i> 100% HIPAA Compliant</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section">
+        <h2 class="section-title" data-aos="fade-up">Achievements & Stats</h2>
+        <div class="stats-container">
+            <div class="stat-box glassmorphism" data-aos="flip-up" data-aos-delay="100">
+                <i class="fas fa-briefcase"></i>
+                <h3 class="counter" data-target="4">0</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-box glassmorphism" data-aos="flip-up" data-aos-delay="200">
+                <i class="fas fa-project-diagram"></i>
+                <h3 class="counter" data-target="10">0</h3>
+                <p>Enterprise Apps</p>
+            </div>
+            <div class="stat-box glassmorphism" data-aos="flip-up" data-aos-delay="300">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3 class="counter" data-target="40">0</h3>
+                <p>% SQL Perf Boost</p>
+            </div>
+            <div class="stat-box glassmorphism" data-aos="flip-up" data-aos-delay="400">
+                <i class="fas fa-server"></i>
+                <h3 class="counter" data-target="50">0</h3>
+                <p>% Deploy Velocity</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CI/CD and GitHub Section -->
+    <section id="github" class="section">
+        <h2 class="section-title" data-aos="fade-up">GitHub & CI/CD Workflow</h2>
+        <div class="github-cicd-container">
+
+            <!-- CI/CD Pipeline -->
+            <div class="cicd-card glassmorphism" data-aos="fade-right">
+                <h3>Automated Deployment (GitHub Actions)</h3>
+                <div class="workflow-steps">
+                    <div class="step"><i class="fab fa-github"></i> <span>Push</span></div>
+                    <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="step"><i class="fas fa-cogs"></i> <span>Build</span></div>
+                    <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="step"><i class="fas fa-vial"></i> <span>Test</span></div>
+                    <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="step"><i class="fas fa-box"></i> <span>Publish</span></div>
+                    <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="step"><i class="fas fa-cloud-upload-alt"></i> <span>Deploy</span></div>
+                </div>
+                <div class="hosting-info">
+                    <div><strong>Frontend:</strong> GitHub Pages</div>
+                    <div><strong>API Hosted on:</strong> Render / Azure App Service</div>
+                    <div><strong>Database:</strong> Azure SQL / SQL Server</div>
+                </div>
+            </div>
+
+            <!-- GitHub Repos (Dynamic) -->
+            <div class="github-repos glassmorphism" data-aos="fade-left">
+                <h3>Latest Repositories</h3>
+                <div id="github-repos-container">
+                    <div class="spinner github-spinner"></div>
+                </div>
+                <a href="https://github.com/yourusername" target="_blank" class="btn btn-outline btn-sm mt-3">View
+                    GitHub Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info glassmorphism" data-aos="fade-right">
+                <h3>Contact Information</h3>
+                <p>Feel free to reach out for collaborations or opportunities.</p>
+
+                <div class="info-item">
+                    <i class="fas fa-user"></i>
+                    <div>
+                        <h4>Name</h4>
+                        <p>Saraswathan I</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p><a href="mailto:saraswathandev@gmail.com">saraswathandev@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-linkedin"></i>
+                    <div>
+                        <h4>LinkedIn</h4>
+                        <p><a href="https://linkedin.com/in/saraswathan-i"
+                                target="_blank">linkedin.com/in/saraswathan-i</a></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <h4>WhatsApp</h4>
+                        <p><a href="https://wa.me/919360714762" target="_blank">+91 93607 14762</a></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Chennai, Tamil Nadu, India</p>
+                    </div>
+                </div>
+
+                <div class="contact-actions mt-3" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="mailto:saraswathandev@gmail.com" class="btn btn-outline btn-sm"><i
+                            class="fas fa-envelope"></i> Email</a>
+                    <a href="https://wa.me/919360714762" target="_blank" class="btn btn-outline btn-sm"
+                        style="border-color: #25D366; color: #25D366;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://linkedin.com/in/saraswathan-i" target="_blank" class="btn btn-outline btn-sm"
+                        style="border-color: #0077b5; color: #0077b5;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                </div>
+            </div>
+
+            <div class="contact-form glassmorphism" data-aos="fade-left">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="hr_name" placeholder="HR Name (Optional)">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="company_name" placeholder="Company Name (Optional)">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" required placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" required placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" required placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Send Message <i
+                            class="fas fa-paper-plane"></i></button>
+                    <div id="form-status" class="mt-3"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Saraswathan I. Full Stack Developer
+
+                <!-- <div class="visitor-counter" style="margin: 1.5rem 0;">
+                <img src="https://api.visitorbadge.io/api/visitors?path=saraswathan.portfolio&countColor=%233b82f6&labelColor=%231e293b"
+                    alt="Visitors Count" style="border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            </div> -->
+
+            <div class="footer-social">
+                <a href="https://github.com/yourusername" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/saraswathan-i" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="mailto:saraswathandev@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://wa.me/919360714762" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top" aria-label="Scroll to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
