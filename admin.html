@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal - Email History</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { padding: 50px 20px; text-align: center; }
+        .admin-container { max-width: 1000px; margin: 0 auto; text-align: left; }
+        .hidden { display: none !important; }
+        .table-responsive { overflow-x: auto; margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        th { text-align: left; color: var(--primary-color); }
+        .pagination { margin-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .login-card { max-width: 400px; margin: 0 auto; padding: 30px; border-radius: 15px; }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Login View -->
+        <div id="login-view" class="login-card glassmorphism">
+            <h2 style="text-align: center; margin-bottom: 20px;">Admin Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <input type="email" id="admin-email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="admin-password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                <div id="login-error" style="color: #ef4444; margin-top: 15px; text-align: center;"></div>
+            </form>
+        </div>
+
+        <!-- History View -->
+        <div id="history-view" class="hidden glassmorphism" style="padding: 30px; border-radius: 15px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2>Email History Logs</h2>
+                <button id="logout-btn" class="btn btn-outline btn-sm">Logout</button>
+            </div>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Subject</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-tbody">
+                        <tr><td colspan="6" style="text-align:center;">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <button id="prev-page" class="btn btn-secondary btn-sm" disabled>Previous</button>
+                <span id="page-info">Page 1</span>
+                <button id="next-page" class="btn btn-secondary btn-sm">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        // Check Auth State on Load
+        let currentPage = 1;
+        const pageSize = 10;
+        
+        const loginView = document.getElementById('login-view');
+        const historyView = document.getElementById('history-view');
+        const loginForm = document.getElementById('login-form');
+        const loginError = document.getElementById('login-error');
+        const historyTbody = document.getElementById('history-tbody');
+        const prevPageBtn = document.getElementById('prev-page');
+        const nextPageBtn = document.getElementById('next-page');
+        const pageInfo = document.getElementById('page-info');
+        const logoutBtn = document.getElementById('logout-btn');
+
+        function checkAuth() {
+            const token = localStorage.getItem('adminToken');
+            if (token) {
+                loginView.classList.add('hidden');
+                historyView.classList.remove('hidden');
+                loadHistory();
+            } else {
+                loginView.classList.remove('hidden');
+                historyView.classList.add('hidden');
+            }
+        }
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+            loginError.innerText = 'Authenticating...';
+
+            try {
+                const response = await fetch(`${CONFIG.API_BASE_URL}/api/Auth`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.token) {
+                        localStorage.setItem('adminToken', data.token);
+                        loginError.innerText = '';
+                        checkAuth();
+                    } else {
+                        loginError.innerText = 'Login failed.';
+                    }
+                } else {
+                    loginError.innerText = 'Invalid credentials or unauthorized.';
+                }
+            } catch (error) {
+                loginError.innerText = 'Network error. Make sure API is running.';
+            }
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('adminToken');
+            checkAuth();
+        });
+
+        async function loadHistory() {
+            const token = localStorage.getItem('adminToken');
+            historyTbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Loading...</td></tr>';
+            
+            try {
+                const response = await fetch(`${CONFIG.API_BASE_URL}/api/Email/History?pageNumber=${currentPage}&pageSize=${pageSize}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    if (result.status && result.data) {
+                        renderTable(result.data.logs);
+                        updatePagination(result.data.totalRecords);
+                    } else {
+                        historyTbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No data found.</td></tr>';
+                    }
+                } else if (response.status === 401) {
+                    // Token expired or invalid
+                    localStorage.removeItem('adminToken');
+                    checkAuth();
+                } else {
+                    historyTbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#ef4444;">Failed to load logs.</td></tr>';
+                }
+            } catch (error) {
+                historyTbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#ef4444;">Network error fetching logs.</td></tr>';
+            }
+        }
+
+        function renderTable(logs) {
+            if (!logs || logs.length === 0) {
+                historyTbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No email logs found.</td></tr>';
+                return;
+            }
+
+            historyTbody.innerHTML = logs.map(log => `
+                <tr>
+                    <td>${log.id}</td>
+                    <td>${new Date(log.createdDate).toLocaleString()}</td>
+                    <td>${log.fromAddress || 'N/A'}</td>
+                    <td>${log.toAddress || 'N/A'}</td>
+                    <td>${log.subject}</td>
+                    <td>
+                        <span style="color: ${log.status === 'Sent' ? '#10b981' : '#ef4444'}">
+                            ${log.status}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function updatePagination(totalRecords) {
+            const totalPages = Math.ceil(totalRecords / pageSize);
+            pageInfo.innerText = `Page ${currentPage} of ${totalPages || 1}`;
+            
+            prevPageBtn.disabled = currentPage <= 1;
+            nextPageBtn.disabled = currentPage >= totalPages || totalPages === 0;
+        }
+
+        prevPageBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                loadHistory();
+            }
+        });
+
+        nextPageBtn.addEventListener('click', () => {
+            currentPage++;
+            loadHistory();
+        });
+
+        // Init
+        checkAuth();
+    </script>
+</body>
+</html>
