@@ -238,20 +238,22 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
         btn.disabled = true;
 
-        const formData = new FormData();
-        formData.append('name', document.getElementById('name').value);
-        formData.append('hr_name', document.getElementById('hr_name').value);
-        formData.append('company_name', document.getElementById('company_name').value);
-        formData.append('email', document.getElementById('email').value);
-        formData.append('subject', document.getElementById('subject').value);
-        formData.append('message', document.getElementById('message').value);
+        const payload = {
+            name: document.getElementById('name').value,
+            hr_Name: document.getElementById('hr_name').value,
+            company_Name: document.getElementById('company_name').value,
+            email: document.getElementById('email').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value
+        };
 
         try {
-            // NOTE: This requires a PHP-enabled server to work.
-            // GitHub Pages only hosts static files (HTML/CSS/JS).
-            const response = await fetch('contact.php', {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/Email/SendContact`, {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
             });
 
             if(response.ok) {
@@ -261,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 formStatus.innerHTML = '<p style="color: #ef4444;"><i class="fas fa-times-circle"></i> Failed to send message. Please try again later.</p>';
             }
         } catch (error) {
-            formStatus.innerHTML = '<p style="color: #ef4444;"><i class="fas fa-times-circle"></i> Network error. Please ensure this is hosted on a PHP server.</p>';
+            formStatus.innerHTML = '<p style="color: #ef4444;"><i class="fas fa-times-circle"></i> Network error. Please ensure the API is running.</p>';
         }
 
         btn.innerHTML = originalText;
